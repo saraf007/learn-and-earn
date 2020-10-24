@@ -1,0 +1,21 @@
+  .question-card {
+    width: max-content;
+    margin: auto;
+    top: 15%;
+  }
+
+  .example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    margin-top: 5% !important;
+  }
+
+  .example-radio-button {
+    margin: 5px;
+  }
+
+  .button {
+    
+    text-align: center;
+  }
