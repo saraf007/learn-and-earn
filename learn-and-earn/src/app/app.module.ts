@@ -7,16 +7,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Project
 import { QuestionComponent } from './question/question.component';
+import { AddQuestionsComponent } from './add-questions/add-questions.component';
 
 // Angular Material
 import {MatCardModule} from '@angular/material/card';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuestionComponent
+    QuestionComponent,
+    AddQuestionsComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatCardModule,
     MatRadioModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

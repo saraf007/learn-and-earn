@@ -1,0 +1,19 @@
+<form class="add-question">
+  <mat-form-field>
+    <mat-label>Add your question here.</mat-label>
+    <input matInput type="text" #question>
+  </mat-form-field><br>
+
+  <mat-form-field>
+    <mat-label>Add your options here.</mat-label>
+    <textarea matInput rows="6" #option></textarea>
+  </mat-form-field>
+
+  <div>
+    <button mat-raised-button color="accent" (click)="onAddQuestion(question,option)">Save</button>
+    <p>New Question added: {{ newQuestion }}</p>
+    <p>New Answer added:  {{ answer }}</p>
+  </div>
+</form>
+
+
