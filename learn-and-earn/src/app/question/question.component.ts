@@ -1,9 +1,9 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 
 // Project
 import { Question } from '../questions.model';
+import { QuestionsService } from '../add-questions/questions.service';
 
 @Component({
     selector: 'app-question',
@@ -11,14 +11,37 @@ import { Question } from '../questions.model';
     styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
-    answers: string[] = ["Option 1","Option 2","Option 3","Option 4"];
+    // answers: string[] = ["Option 1","Option 2","Option 3","Option 4"];
     selectedAnswer: string;
-    question = "What is called the Power House of the Cell?";
+    // question:string = "What is called the Power House of the Cell?";
     correctAnswer = "Option 1";
+    // dummyQuestions: any = [];
+    questions: Question[];
 
-    constructor() {}
+    constructor(private questionsService: QuestionsService) {
+      // this.dummyQuestions = [
+      //   {
+      //     id: "1",
+      //     question: "question1",
+      //     answer: ["answer1", "answer2"]
+      //   },
+      //   {
+      //     id: "2",
+      //     question: "question2",
+      //     answer: ["answer1", "answer2"]
+      //   }
+      // ];
+    }
 
     ngOnInit() {
+       this.getQuestionAnswer();
+    }
+
+    getQuestionAnswer() {
+      return this.questionsService.getQuestions().subscribe((response) => {
+        console.log(response);
+        this.questions = response;
+      });
     }
 
     onNext(answer: string) {

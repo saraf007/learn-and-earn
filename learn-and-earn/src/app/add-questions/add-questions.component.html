@@ -6,13 +6,11 @@
 
   <mat-form-field>
     <mat-label>Add your options here.</mat-label>
-    <textarea matInput rows="6" #option></textarea>
+    <textarea matInput rows="6" #answer></textarea>
   </mat-form-field>
 
   <div>
-    <button mat-raised-button color="accent" (click)="onAddQuestion(question,option)">Save</button>
-    <p>New Question added: {{ newQuestion }}</p>
-    <p>New Answer added:  {{ answer }}</p>
+    <button mat-raised-button color="accent" (click)="onAddQuestion(question,answer)">Save</button>
   </div>
 </form>
 

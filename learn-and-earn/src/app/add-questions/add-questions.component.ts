@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 // Project
 import { Question } from '../questions.model';
+import { QuestionsService } from './questions.service';
 
 @Component({
   selector: 'app-add-questions',
@@ -11,22 +12,21 @@ import { Question } from '../questions.model';
 })
 export class AddQuestionsComponent implements OnInit {
   newQuestion: string = '';
-  answer: string = '';
 
   questions: Question[] = [];
 
-  constructor() { }
+  question: string;
+  answer: string;
+
+  constructor(public questionsService: QuestionsService) { }
 
   ngOnInit(): void {
   }
 
-  onAddQuestion(question, option) {
-   const questionandanswer = {
-      question: question.value,
-      answer: option.value
-    };
-    this.questions.push(questionandanswer);
-    console.log(this.questions);
+  onAddQuestion(question, answer) {
+    console.log("The question entered: " + this.question);
+    console.log("The answers entered: " + this.answer);
+    this.questionsService.addQuestions(question.value, answer.value);
   }
 
 }
