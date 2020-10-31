@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 // Project
 import { Question } from '../questions.model';
 import { QuestionsService } from '../add-questions/questions.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-question',
@@ -16,7 +17,8 @@ export class QuestionComponent implements OnInit {
     // question:string = "What is called the Power House of the Cell?";
     correctAnswer = "Option 1";
     // dummyQuestions: any = [];
-    questions: Question[];
+    questions: Question[] = [];
+    private questionsSub: Subscription;
 
     constructor(private questionsService: QuestionsService) {
       // this.dummyQuestions = [
@@ -38,10 +40,11 @@ export class QuestionComponent implements OnInit {
     }
 
     getQuestionAnswer() {
-      return this.questionsService.getQuestions().subscribe((response) => {
-        console.log(response);
-        this.questions = response;
-      });
+      this.questionsService.getQuestions();
+      this.questionsSub = this.questionsService.getQuestionUpdateListener()
+        .subscribe((questions: Question[]) => {
+          this.questions = questions;
+        });
     }
 
     onNext(answer: string) {
