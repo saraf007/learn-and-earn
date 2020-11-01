@@ -11,22 +11,15 @@ import { QuestionsService } from './questions.service';
   styleUrls: ['./add-questions.component.css']
 })
 export class AddQuestionsComponent implements OnInit {
-  newQuestion: string = '';
-
-  questions: Question[] = [];
-
-  question: string;
-  answer: string;
-
   constructor(public questionsService: QuestionsService) { }
 
   ngOnInit(): void {
   }
 
   onAddQuestion(question, answer) {
-    console.log("The question entered: " + this.question);
-    console.log("The answers entered: " + this.answer);
-    this.questionsService.addQuestions(question.value, answer.value);
+    console.log("The question entered: " + question.value);
+    console.log("The answers entered: " + answer.value.split(","));
+    this.questionsService.addQuestions(question.value, answer.value.split(","));
   }
 
 }

@@ -12,6 +12,7 @@ import { Observable, Subject } from 'rxjs';
 })
 export class QuestionsService {
   private questions: Question[] = [];
+  private answers: string[] = [];
   private questionsUpdated = new Subject<Question[]>();
 
   constructor(private http: HttpClient) {}
@@ -49,5 +50,14 @@ export class QuestionsService {
           console.log(data);
           this.questions.push(questionPayLoad);
         });
+  }
+
+  deleteQuestions(id: string) {
+    this.http.delete("http://localhost:3000/api/questions/" + id).subscribe(() => {
+      console.log('Deleted');
+      const updatedQuestions = this.questions.filter(question => question.id !== id);
+      this.questions = updatedQuestions;
+      this.questionsUpdated.next([...this.questions]);
+    });
   }
 }

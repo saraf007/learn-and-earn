@@ -49,4 +49,16 @@ app.get('/api/questions',(req,res, next) => {
     });
 });
 
+/** DELETE: delete questions and answers */
+app.delete('/api/questions/:id',(req, res, next) => {
+  Question.deleteOne({ _id: req.params.id }).then(result => {
+    console.log(result);
+    res.status(200).json(
+      {
+        message : 'question and answer deleted!'
+      }
+    )
+  })
+});
+
 module.exports = app;
