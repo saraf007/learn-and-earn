@@ -16,6 +16,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import {MatInputModule} from '@angular/material/input';
     MatButtonModule,
     FormsModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

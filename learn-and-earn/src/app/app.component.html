@@ -1,2 +1,12 @@
-<app-question></app-question>
-<app-add-questions></app-add-questions>
+<mat-toolbar color="primary">
+  <span><a routerLink="/">Learn And Earn</a></span>
+  <ul>
+    <li>
+      <a routerLink="/add-question">Add Questions</a>
+    </li>
+  </ul>
+</mat-toolbar>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

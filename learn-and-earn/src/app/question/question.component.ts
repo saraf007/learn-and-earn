@@ -17,7 +17,8 @@ export class QuestionComponent implements OnInit {
     selectedAnswer: string;
     correctAnswer = "Option 1";
     questions: Question[] = [];
-    private questionsSub: Subscription;
+    questionsSub: Subscription;
+    loading = true;
 
     constructor(private questionsService: QuestionsService) { }
 
@@ -30,6 +31,7 @@ export class QuestionComponent implements OnInit {
       this.questionsSub = this.questionsService.getQuestionUpdateListener()
         .subscribe((questions: Question[]) => {
           this.questions = questions;
+          this.loading = false;
         });
     }
 
