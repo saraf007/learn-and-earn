@@ -36,7 +36,7 @@ app.post("/api/questions", (req, res, next) => {
     });
 });
 
-/** GET: fetch questions and answers */
+/** GET: fetch all questions and answers */
 app.get('/api/questions',(req,res, next) => {
   Question.find().then(documents => {
         console.log(documents);
@@ -45,7 +45,20 @@ app.get('/api/questions',(req,res, next) => {
                 message: 'Questions fetched successfully',
                 questions: documents
             }
-        );
+        )
+    });
+});
+
+/** GET: fetch first question and answer from a collection*/
+app.get('/api/question',(req,res, next) => {
+  Question.findOne().then(document => {
+        console.log(document);
+        res.status(200).json(
+            {
+                message: 'First question fetched successfully',
+                questions: document
+            }
+        )
     });
 });
 

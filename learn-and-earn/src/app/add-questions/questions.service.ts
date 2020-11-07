@@ -17,7 +17,7 @@ export class QuestionsService {
 
   constructor(private http: HttpClient) {}
 
-  /**GET: fetch questions */
+  /**GET: fetch all questions */
   getQuestions() {
     this.http.get<{message: string, questions: any}>("http://localhost:3000/api/questions")
       .pipe(map((questionData) => {
@@ -36,6 +36,15 @@ export class QuestionsService {
 
   getQuestionUpdateListener() {
     return this.questionsUpdated.asObservable();
+}
+
+/**GET: fetch first question from the collection */
+getFirstQuestion(): Observable<Question> {
+ return this.http.get<Question>("http://localhost:3000/api/question");
+}
+
+getFirstQuestionUpdateListener() {
+  return this.questionsUpdated.asObservable();
 }
 
   /**POST: add questions  */

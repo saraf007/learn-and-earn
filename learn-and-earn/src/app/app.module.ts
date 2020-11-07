@@ -18,12 +18,14 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionComponent,
-    AddQuestionsComponent
+    AddQuestionsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

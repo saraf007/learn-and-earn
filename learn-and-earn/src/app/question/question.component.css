@@ -16,6 +16,10 @@
   }
 
   .button {
-    
     text-align: center;
+  }
+
+  .spinner {
+    margin-left: 45%;
+    margin-top: 9%;
   }
