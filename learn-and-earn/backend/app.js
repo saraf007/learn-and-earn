@@ -62,6 +62,19 @@ app.get('/api/question',(req,res, next) => {
     });
 });
 
+/** GET: fetch next in line question and answer from a collection*/
+app.get('/api/nextquestion',(req, res, next) => {
+  Question.findOne().sort({_id: -1}).then(document => {
+    console.log(document);
+    res.status(200).json(
+      {
+        message: 'Next question fetched successfully',
+        questions: document
+      }
+    )
+  })
+});
+
 /** DELETE: delete questions and answers */
 app.delete('/api/questions/:id',(req, res, next) => {
   Question.deleteOne({ _id: req.params.id }).then(result => {

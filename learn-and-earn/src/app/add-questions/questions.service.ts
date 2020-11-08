@@ -43,8 +43,9 @@ getFirstQuestion(): Observable<Question> {
  return this.http.get<Question>("http://localhost:3000/api/question");
 }
 
-getFirstQuestionUpdateListener() {
-  return this.questionsUpdated.asObservable();
+/**GET: fetch next in line question from the collection */
+getNextQuestion(): Observable<Question> {
+  return this.http.get<Question>("http://localhost:3000/api/nextquestion");
 }
 
   /**POST: add questions  */

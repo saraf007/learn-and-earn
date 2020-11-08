@@ -40,16 +40,19 @@ export class QuestionComponent implements OnInit {
 
     /**Get first question and answer (document) of a collection */
     getFirstQuestionAnswer() {
-      this.questionsService.getFirstQuestion().subscribe((singleQuestion: Question) => {
-        console.log("Data from component: ", singleQuestion);
-        this.singleQuestion =  singleQuestion;
-        console.log("Template: " , this.singleQuestion);
+      this.questionsService.getFirstQuestion().subscribe((data : any) => {
+        console.log(data.questions);
+        this.singleQuestion = data.questions;
         this.loading = false;
       });
     }
 
-    onNext(questionId: string) {
-        // this.questionsService.getQuestionsById(questionId);
+    onNext() {
+        this.questionsService.getNextQuestion().subscribe((data: any) => {
+          console.log(data.questions);
+          this.singleQuestion = data.questions;
+          this.loading = false;
+        });
     }
 
     onDelete(id: string) {
