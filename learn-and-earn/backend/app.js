@@ -24,9 +24,10 @@ app.use((req, res, next) => {
     next();
 });
 
-/** POST: add questions */
+/** POST: add questions and answers */
 app.post("/api/questions", (req, res, next) => {
     const question = new Question({
+        questionNumber: req.body.questionNumber,
         question: req.body.question,
         answer: req.body.answer
     });
@@ -63,17 +64,28 @@ app.get('/api/question',(req,res, next) => {
 });
 
 /** GET: fetch next in line question and answer from a collection*/
-app.get('/api/nextquestion',(req, res, next) => {
-  Question.findOne().sort({_id: -1}).then(document => {
-    console.log(document);
-    res.status(200).json(
-      {
-        message: 'Next question fetched successfully',
-        questions: document
-      }
-    )
-  })
-});
+app.get('/api/nextquestion/:questionNumber',(req, res, next) => {
+  var count = Question.estimatedDocumentCount(function (err, count) {
+          if(err) {
+            console.log(err)
+          }
+          else {
+            console.log(count);
+            var i = 0;
+            while(i != count) {
+              Question.findOne({questionNumber: {$gt: req.params.questionNumber}})
+              .then(document => {
+                console.log(document);
+                res.status(200).json({
+                  message: 'Next question fetched successfully',
+                  questions: document
+                });
+              })
+              i++;
+            }
+          }
+        });
+    });
 
 /** DELETE: delete questions and answers */
 app.delete('/api/questions/:id',(req, res, next) => {

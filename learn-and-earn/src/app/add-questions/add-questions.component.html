@@ -1,6 +1,11 @@
 <form class="add-question">
   <mat-form-field>
-    <mat-label>Add your question here.</mat-label>
+    <mat-label>Add Question Number:</mat-label>
+    <input matInput type="number" #questionNumber>
+  </mat-form-field><br>
+
+  <mat-form-field>
+    <mat-label>Add Question:</mat-label>
     <input matInput type="text" #question>
   </mat-form-field><br>
 
@@ -10,7 +15,7 @@
   </mat-form-field>
 
   <div>
-    <button mat-raised-button color="accent" (click)="onAddQuestion(question,answer)">Save</button>
+    <button mat-raised-button color="accent" (click)="onAddQuestion(questionNumber,question,answer)">Save</button>
   </div>
 </form>
 

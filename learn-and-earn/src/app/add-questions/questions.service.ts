@@ -44,14 +44,15 @@ getFirstQuestion(): Observable<Question> {
 }
 
 /**GET: fetch next in line question from the collection */
-getNextQuestion(): Observable<Question> {
-  return this.http.get<Question>("http://localhost:3000/api/nextquestion");
+getNextQuestion(questionNumber: string): Observable<Question> {
+  return this.http.get<Question>("http://localhost:3000/api/nextquestion/" + questionNumber);
 }
 
   /**POST: add questions  */
-  addQuestions(question: string, answer: string[]) {
+  addQuestions(questionNumber: number, question: string, answer: string[]) {
     const questionPayLoad: Question = {
       id: null,
+      questionNumber: questionNumber,
       question: question,
       answer: answer
     };

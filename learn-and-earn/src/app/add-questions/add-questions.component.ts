@@ -16,10 +16,12 @@ export class AddQuestionsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onAddQuestion(question, answer) {
+  /**Add questions and answer */
+  onAddQuestion(questionNumber, question, answer) {
+    console.log("The question number: " + questionNumber.value);
     console.log("The question entered: " + question.value);
     console.log("The answers entered: " + answer.value.split(","));
-    this.questionsService.addQuestions(question.value, answer.value.split(","));
+    this.questionsService.addQuestions(questionNumber.value, question.value, answer.value.split(","));
   }
 
 }

@@ -47,8 +47,8 @@ export class QuestionComponent implements OnInit {
       });
     }
 
-    onNext() {
-        this.questionsService.getNextQuestion().subscribe((data: any) => {
+    onNext(questionNumber: string) {
+        this.questionsService.getNextQuestion(questionNumber).subscribe((data: any) => {
           console.log(data.questions);
           this.singleQuestion = data.questions;
           this.loading = false;
