@@ -19,7 +19,7 @@ export class QuestionComponent implements OnInit {
     questions: Question[] = [];
     singleQuestion: Question;
     questionsSub: Subscription;
-    loading = true;
+    isloading = false;
 
     constructor(private questionsService: QuestionsService) { }
 
@@ -34,25 +34,36 @@ export class QuestionComponent implements OnInit {
       this.questionsSub = this.questionsService.getQuestionUpdateListener()
         .subscribe((questions: Question[]) => {
           this.questions = questions;
-          this.loading = false;
+          this.isloading = false;
         });
     }
 
     /**Get first question and answer (document) of a collection */
     getFirstQuestionAnswer() {
+      this.isloading = true;
       this.questionsService.getFirstQuestion().subscribe((data : any) => {
         console.log(data.questions);
         this.singleQuestion = data.questions;
-        this.loading = false;
+        this.isloading = false;
       });
     }
 
-    onNext(questionNumber: string) {
+    onGetNextQuestion(questionNumber: string) {
+      this.isloading = true;
         this.questionsService.getNextQuestion(questionNumber).subscribe((data: any) => {
           console.log(data.questions);
           this.singleQuestion = data.questions;
-          this.loading = false;
+          this.isloading = false;
         });
+    }
+
+    onGetPreviousQuestion(questionNumber: string) {
+      this.isloading = true;
+      this.questionsService.getPreviousQuestion(questionNumber).subscribe((data: any) => {
+        console.log(data.questions);
+        this.singleQuestion = data.questions;
+        this.isloading = false;
+      })
     }
 
     onDelete(id: string) {

@@ -87,6 +87,18 @@ app.get('/api/nextquestion/:questionNumber',(req, res, next) => {
         });
     });
 
+  /**GET: fetch previous question and answer from a collection*/
+  app.get('/api/previousquestion/:questionNumber',(req,res,next) => {
+    Question.findOne({questionNumber: {$lt: req.params.questionNumber}})
+      .then(document => {
+        console.log(document);
+        res.status(200).json({
+          message: 'Previous question fetched successfully',
+          questions: document
+        });
+      });
+  });
+
 /** DELETE: delete questions and answers */
 app.delete('/api/questions/:id',(req, res, next) => {
   Question.deleteOne({ _id: req.params.id }).then(result => {

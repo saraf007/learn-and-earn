@@ -43,9 +43,14 @@ getFirstQuestion(): Observable<Question> {
  return this.http.get<Question>("http://localhost:3000/api/question");
 }
 
-/**GET: fetch next in line question from the collection */
+/**GET: fetch next question from the collection */
 getNextQuestion(questionNumber: string): Observable<Question> {
   return this.http.get<Question>("http://localhost:3000/api/nextquestion/" + questionNumber);
+}
+
+/**GET: fetch previous question from the collection */
+getPreviousQuestion(questionNumber: string): Observable<Question> {
+  return this.http.get<Question>("http://localhost:3000/api/previousquestion/" + questionNumber);
 }
 
   /**POST: add questions  */
