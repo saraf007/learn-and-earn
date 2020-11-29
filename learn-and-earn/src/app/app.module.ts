@@ -10,6 +10,7 @@ import { QuestionComponent } from './question/question.component';
 import { AddQuestionsComponent } from './add-questions/add-questions.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HeaderComponent } from './header/header.component';
 
 // Angular Material
 import {MatCardModule} from '@angular/material/card';
@@ -18,14 +19,16 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { HeaderComponent } from './header/header.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionComponent,
     AddQuestionsComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { HeaderComponent } from './header/header.component';
     MatInputModule,
     HttpClientModule,
     MatToolbarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
