@@ -59,7 +59,8 @@ getPreviousQuestion(questionNumber: string): Observable<Question> {
       id: null,
       questionNumber: questionNumber,
       question: question,
-      answer: answer
+      answer: answer,
+      correctAnswer: null
     };
     this.http.post<Question[]>("http://localhost:3000/api/questions", questionPayLoad)
         .subscribe((data) => {

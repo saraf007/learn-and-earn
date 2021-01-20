@@ -20,7 +20,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import {ProgressBarComponent} from './progress-bar/progress-bar.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     HttpClientModule,
     MatToolbarModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

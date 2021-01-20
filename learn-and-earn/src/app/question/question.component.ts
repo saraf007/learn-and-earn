@@ -1,5 +1,6 @@
 // Angular
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 // RXJS
 import { Subscription } from 'rxjs';
@@ -14,14 +15,15 @@ import { QuestionsService } from '../add-questions/questions.service';
     styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
-    selectedAnswer: string;
-    correctAnswer = "Option 1";
+    selectedAnswer: any;
     questions: Question[] = [];
     singleQuestion: Question;
     questionsSub: Subscription;
     isloading = false;
+    points: number = 0;
+    dialogBox: any;
 
-    constructor(private questionsService: QuestionsService) { }
+    constructor(private questionsService: QuestionsService, private dialog: MatDialog) { }
 
     ngOnInit() {
        //this.getQuestionAnswer();
@@ -48,6 +50,7 @@ export class QuestionComponent implements OnInit {
       });
     }
 
+    // get the next question
     onGetNextQuestion(questionNumber: string) {
       this.isloading = true;
         this.questionsService.getNextQuestion(questionNumber).subscribe((data: any) => {
@@ -70,4 +73,30 @@ export class QuestionComponent implements OnInit {
       this.questionsService.deleteQuestions(id);
     }
 
+    // evaluate question
+    evaluateQuestion(selectedAnswer: string, questionNumber: string) {
+      console.log(selectedAnswer);
+      console.log(this.singleQuestion.correctAnswer);
+      if(selectedAnswer === this.singleQuestion.correctAnswer) {
+        console.log("your answer: " + selectedAnswer + " is correct.");
+        this.dialog.open(DialogBoxComponent, {
+          data: {
+
+          }
+        });
+        this.points = this.points + 1;
+        this.onGetNextQuestion(questionNumber);
+      }
+      else{
+        console.log("your answer: " + selectedAnswer + " is wrong.");
+      }
+    }
+
+}
+
+@Component({
+  selector: 'app-dialogBox',
+  templateUrl: './dialogBox.component.html'
+})
+export class DialogBoxComponent {
 }

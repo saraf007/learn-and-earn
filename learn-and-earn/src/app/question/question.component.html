@@ -7,12 +7,17 @@
     <mat-card-title>{{ singleQuestion.question }}</mat-card-title>
         <mat-card-content>
             <mat-radio-group class="example-radio-group" [(ngModel)]="selectedAnswer">
-                    <mat-radio-button class="example-radio-button" *ngFor="let a of singleQuestion.answer">{{ a }}</mat-radio-button>
+                    <mat-radio-button
+                     class="example-radio-button"
+                     *ngFor="let answer of singleQuestion.answer"
+                     [value]="answer">
+                       {{ answer }}
+                    </mat-radio-button>
             </mat-radio-group>
         </mat-card-content>
         <mat-card-actions class="button" style="margin: auto;">
-            <button mat-raised-button color="accent" (click)="onGetPreviousQuestion(singleQuestion.questionNumber)">Back</button>
-            <button mat-raised-button color="primary" (click)="onGetNextQuestion(singleQuestion.questionNumber)">Next</button>
+            <button mat-raised-button color="primary" (click)="evaluateQuestion(selectedAnswer,singleQuestion.questionNumber)">Check</button>
         </mat-card-actions>
 </mat-card>
 </ng-template>
+
