@@ -1,13 +1,16 @@
 // Angular
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
 
 // RXJS
 import { Subscription } from 'rxjs';
 
 // Project
 import { Question } from '../questions.model';
+import { DialogboxComponent } from '../dialogbox/dialogbox.component';
 import { QuestionsService } from '../add-questions/questions.service';
+
+// Angular Material
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-question',
@@ -22,8 +25,9 @@ export class QuestionComponent implements OnInit {
     isloading = false;
     points: number = 0;
     dialogBox: any;
+    isAnswerCorrect: boolean = false;
 
-    constructor(private questionsService: QuestionsService, private dialog: MatDialog) { }
+    constructor(private questionsService: QuestionsService, public dialog: MatDialog) { }
 
     ngOnInit() {
        //this.getQuestionAnswer();
@@ -74,29 +78,57 @@ export class QuestionComponent implements OnInit {
     }
 
     // evaluate question
-    evaluateQuestion(selectedAnswer: string, questionNumber: string) {
-      console.log(selectedAnswer);
-      console.log(this.singleQuestion.correctAnswer);
-      if(selectedAnswer === this.singleQuestion.correctAnswer) {
-        console.log("your answer: " + selectedAnswer + " is correct.");
-        this.dialog.open(DialogBoxComponent, {
-          data: {
-
-          }
-        });
-        this.points = this.points + 1;
-        this.onGetNextQuestion(questionNumber);
+    evaluateQuestion(selectedAnswer: string) {
+      // check if answer is marked or not
+      if(selectedAnswer === undefined || selectedAnswer === null) {
+        this.isAnswerCorrect = false;
+        this.dialogConfig(this.isAnswerCorrect, selectedAnswer);
       }
+      // check if answer is correct or not
+     else if(selectedAnswer === this.singleQuestion.correctAnswer) {
+        this.points = this.points + 1;
+        this.isAnswerCorrect = true;
+        this.dialogConfig(this.isAnswerCorrect, selectedAnswer);
+      }
+      // answer is wrong
       else{
-        console.log("your answer: " + selectedAnswer + " is wrong.");
+        this.points = this.points - 1;
+        this.isAnswerCorrect = false;
+        this.dialogConfig(this.isAnswerCorrect, selectedAnswer);
       }
     }
 
-}
+    // dialog configuration
+    private dialogConfig(isAnswerCorrect: boolean, selectedAnswer: string) {
+      const config = new MatDialogConfig();
+      config.disableClose = true;
 
-@Component({
-  selector: 'app-dialogBox',
-  templateUrl: './dialogBox.component.html'
-})
-export class DialogBoxComponent {
+      if (!isAnswerCorrect) {
+        if(selectedAnswer === undefined) {
+          config.panelClass = "warning";
+          config.data = {
+            dialogDescription : `Please select an answer!`
+          };
+          this.dialog.open(DialogboxComponent, config);
+          return;
+        }
+        config.panelClass = "danger";
+        config.data = {
+          dialogDescription : `Your answer : ${selectedAnswer} is wrong.`,
+          dialogContent: `You have lost 1 Point.
+          Your Total Points are ${this.points}.`
+        };
+        this.dialog.open(DialogboxComponent, config);
+      }
+      if(isAnswerCorrect) {
+        config.panelClass = "success";
+        config.data = {
+          dialogDescription : `Your answer : ${selectedAnswer} is correct.`,
+          dialogContent: `You have earned 1 Point.
+          Your Total Points are ${this.points}.`,
+        };
+        this.dialog.open(DialogboxComponent, config);
+      }
+    }
+
 }

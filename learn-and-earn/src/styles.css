@@ -2,3 +2,19 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.success .mat-dialog-container {
+  border: 2px solid green;
+  background-color: #e9ffdb;
+}
+
+.warning .mat-dialog-container{
+  border: 2px solid yellow;
+  background-color: #FFFFCC;
+}
+
+.danger .mat-dialog-container{
+  border: 2px solid red;
+  background-color: #FFDAB9;
+}
