@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { DialogboxComponent } from './dialogbox/dialogbox.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 // Angular Material
 import {MatCardModule} from '@angular/material/card';
@@ -31,7 +33,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     AddQuestionsComponent,
     HeaderComponent,
     ProgressBarComponent,
-    DialogboxComponent
+    DialogboxComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

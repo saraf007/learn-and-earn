@@ -1,12 +1,15 @@
 a {
   color: white;
   text-decoration: none;
+  padding: 5px;
 }
 
 ul {
   list-style-type:none;
+  display: flex;
+  margin-left: auto;
 }
 
 .active-link {
-  color: darkturquoise;
+  color:coral;
 }
