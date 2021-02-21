@@ -25,6 +25,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {ProgressBarComponent} from './progress-bar/progress-bar.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     ProgressBarComponent,
     DialogboxComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    SnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatToolbarModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

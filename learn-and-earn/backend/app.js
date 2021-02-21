@@ -2,6 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const checkAuth = require("./middleware/check-auth");
+
+const userRoutes = require("./routes/user");
+
 const Question = require('./models/question');
 
 const app = express();
@@ -110,5 +114,7 @@ app.delete('/api/questions/:id',(req, res, next) => {
     )
   })
 });
+
+app.use("/api/user", userRoutes);
 
 module.exports = app;
