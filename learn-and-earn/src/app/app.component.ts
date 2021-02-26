@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
+// Angular
+import { Component, OnInit } from '@angular/core';
+
+// Project
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'learn-and-earn';
+export class AppComponent implements OnInit {
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit() {
+    this.authService.autoAuthUser();
+  }
 }

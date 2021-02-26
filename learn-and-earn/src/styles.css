@@ -24,3 +24,7 @@ body {
   border: 2px solid red;
   background-color: #FFDAB9;
 }
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: green!important;
+}

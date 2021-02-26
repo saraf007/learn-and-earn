@@ -18,7 +18,7 @@ router.post("/signup", (req, res, next) => {
       user.save()
         .then(result => {
           res.status(201).json({
-            message: 'User Created!',
+            message: 'User created successfully !',
             result: result.email,
             isCreated: true
           });
@@ -55,7 +55,9 @@ router.post("/login", (req, res, next) => {
          {expiresIn: '1h'}
          );
          return res.status(200).json({
-          token: token
+          token: token,
+          message: "User logged in successfully !",
+          expiresIn: 3600
          });
     })
     .catch(err => {

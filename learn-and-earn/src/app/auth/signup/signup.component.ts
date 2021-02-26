@@ -2,10 +2,12 @@
 import { NgForm } from "@angular/forms";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 
+// RXJS
+import { Subscription } from "rxjs";
+
 // Project
 import { AuthService } from "../auth.service";
-import { SnackBarService } from "src/app/shared/snack-bar.service";
-import { Subscription } from "rxjs";
+import { NotificationService } from "../../shared/notification/notification.service";
 
 @Component({
   templateUrl: './signup.component.html',
@@ -16,7 +18,7 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   isLoading:boolean = false;
 
-    constructor(public authService: AuthService, public snackBarService: SnackBarService)
+    constructor(public authService: AuthService, public notificationService: NotificationService)
     { }
 
     ngOnInit() { }
@@ -29,10 +31,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.createUser = this.authService.createUser(form.value.email, form.value.password)
       .subscribe((res) => {
         if(res.isCreated) {
-          this.snackBarService.openSnackBar(res.message);
-        }
-        else {
-          this.snackBarService.openSnackBar(res.message);
+          this.notificationService.showNotification(res.message);
         }
       });
     }

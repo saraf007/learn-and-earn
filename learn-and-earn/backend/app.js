@@ -23,13 +23,13 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS");
     next();
 });
 
 /** POST: add questions and answers */
-app.post("/api/questions", (req, res, next) => {
+app.post("/api/questions", checkAuth, (req, res, next) => {
     const question = new Question({
         questionNumber: req.body.questionNumber,
         question: req.body.question,
@@ -104,7 +104,7 @@ app.get('/api/nextquestion/:questionNumber',(req, res, next) => {
   });
 
 /** DELETE: delete questions and answers */
-app.delete('/api/questions/:id',(req, res, next) => {
+app.delete('/api/questions/:id', checkAuth, (req, res, next) => {
   Question.deleteOne({ _id: req.params.id }).then(result => {
     console.log(result);
     res.status(200).json(

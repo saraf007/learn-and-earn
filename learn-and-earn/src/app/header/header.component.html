@@ -13,6 +13,8 @@
         <a routerLink="/signup" routerLinkActive="active-link">
           <button mat-raised-button class="signup">Signup</button>
         </a>
+    <!-- Logout button -->
+        <button mat-raised-button class="logout" *ngIf="userIsAuthenticated">Logout</button>
     </div>
 
     <!-- website links -->
