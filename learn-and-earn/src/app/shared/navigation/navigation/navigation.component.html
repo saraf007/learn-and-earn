@@ -1,0 +1,8 @@
+<nav mat-tab-nav-bar style="background-color:white;">
+  <a mat-tab-link *ngFor="let link of links"
+     (click)="activeLink = link"
+     [active]="activeLink == link" style="color: black;"> {{link}} </a>
+
+     <button mat-raised-button style="margin-left: auto;" (click)="onLogout()">
+      Logout</button>
+</nav>

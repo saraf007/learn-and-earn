@@ -1,14 +1,26 @@
-<mat-toolbar color="primary">
-  <span><a routerLink="/">Learn And Earn</a></span>
-  <ul>
-    <!-- <li>
-      <a routerLink="/add-question" routerLinkActive="active-link">Add Questions</a>
-    </li> -->
-    <li>
-      <a routerLink="/login" routerLinkActive="active-link">Login</a>
-    </li>
-    <li>
-      <a routerLink="/signup" routerLinkActive="active-link">Signup</a>
-    </li>
-  </ul>
+<mat-toolbar>
+  <div>
+    <a routerLink="/">
+      <img src="../../assets/images/logo.png" style="height: 300px;">
+    </a>
+  </div>
+    <div class="button">
+    <!-- Login Button -->
+        <a routerLink="/login" routerLinkActive="active-link">
+          <button mat-raised-button class="login">Login</button>
+        </a>
+    <!-- Signup Button -->
+        <a routerLink="/signup" routerLinkActive="active-link">
+          <button mat-raised-button class="signup">Signup</button>
+        </a>
+    <!-- Logout button -->
+        <button mat-raised-button class="logout" *ngIf="userIsAuthenticated">Logout</button>
+    </div>
+
+    <!-- website links -->
+    <div class="links">
+      <span><a href="#">About Us</a></span>
+      <span><a href="#">Get in Touch</a></span>
+      <span><a href="#">Careers</a></span>
+    </div>
 </mat-toolbar>

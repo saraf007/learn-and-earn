@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Project
@@ -14,6 +14,9 @@ import { HeaderComponent } from './header/header.component';
 import { DialogboxComponent } from './dialogbox/dialogbox.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { NotificationComponent } from './shared/notification/notification.component';
+import { AuthInterceptor } from "./auth/auth-interceptor";
+import { NavigationComponent } from './shared/navigation/navigation/navigation.component';
 
 // Angular Material
 import {MatCardModule} from '@angular/material/card';
@@ -25,6 +28,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {ProgressBarComponent} from './progress-bar/progress-bar.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     ProgressBarComponent,
     DialogboxComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    NotificationComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -50,9 +57,11 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatToolbarModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule,
+    MatTabsModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
