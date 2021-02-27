@@ -1,14 +1,15 @@
 // Angular
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 // Rxjs
-import { Subject } from 'rxjs';
+import { Subject, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 // Project
 import { AuthData } from './auth-data.model';
+import { NotificationService } from '../shared/notification/notification.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -17,7 +18,9 @@ export class AuthService {
   private isAuthenticated = false;
   private tokenTimer: any;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient,
+              private router: Router,
+              private notificationService: NotificationService) { }
 
   // Create User / Signup
   createUser(email: string, password: string) {
@@ -25,7 +28,14 @@ export class AuthService {
       email: email,
       password: password
     };
-   return this.http.post<{message: string}>("http://localhost:3000/api/user/signup", authData);
+   return this.http.post<{message: string}>("http://localhost:3000/api/user/signup", authData)
+    .pipe(
+      catchError((error: HttpErrorResponse) => {
+        this.notificationService.showNotification(`User: ${email} already exist.
+         Please use another email id for creating an account.`);
+          return throwError(error);
+      })
+    )
   }
 
   // Login User
