@@ -17,7 +17,7 @@ export class NotificationService {
       data: {
         message: displayMessage
       },
-      duration: 5000,
+      duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
     });

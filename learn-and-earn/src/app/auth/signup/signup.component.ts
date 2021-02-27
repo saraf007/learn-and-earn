@@ -1,5 +1,6 @@
 // Angular
 import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 
 // RXJS
@@ -15,11 +16,11 @@ import { NotificationService } from "../../shared/notification/notification.serv
 })
 export class SignupComponent implements OnInit, OnDestroy {
   createUser: Subscription;
-
   isLoading:boolean = false;
 
-    constructor(public authService: AuthService, public notificationService: NotificationService)
-    { }
+    constructor(public authService: AuthService,
+                public notificationService: NotificationService,
+                private router: Router) { }
 
     ngOnInit() { }
 
@@ -29,10 +30,9 @@ export class SignupComponent implements OnInit, OnDestroy {
         return;
       }
       this.createUser = this.authService.createUser(form.value.email, form.value.password)
-      .subscribe((res) => {
-        if(res.isCreated) {
-          this.notificationService.showNotification(res.message);
-        }
+      .subscribe((response) => {
+          this.notificationService.showNotification(response.message);
+          this.router.navigate(['/login']);
       });
     }
 

@@ -25,13 +25,7 @@ export class AuthService {
       email: email,
       password: password
     };
-   return this.http.post("http://localhost:3000/api/user/signup", authData)
-      .pipe(
-        map((data: any) => { return data; }),
-         catchError(error => {
-           return error;
-         })
-      )
+   return this.http.post<{message: string}>("http://localhost:3000/api/user/signup", authData);
   }
 
   // Login User
