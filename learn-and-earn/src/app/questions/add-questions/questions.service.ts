@@ -3,9 +3,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
+// RXJS
+import { Observable, Subject } from 'rxjs';
+
 // Project
 import { Question } from '../questions.model';
-import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: "root"

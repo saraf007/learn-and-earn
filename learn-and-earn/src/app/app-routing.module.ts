@@ -7,7 +7,7 @@ import { AuthGuard } from "./auth/auth.guard";
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { HeaderComponent } from './header/header.component';
-import { QuestionComponent } from './question/question.component';
+import { QuestionComponent } from './questions/view-questions/question.component';
 import { NavigationComponent } from './shared/navigation/navigation/navigation.component';
 
 const routes: Routes = [

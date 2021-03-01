@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 
 // Project
 import { Question } from '../questions.model';
-import { DialogboxComponent } from '../dialogbox/dialogbox.component';
+import { DialogboxComponent } from '../../dialogbox/dialogbox.component';
 import { QuestionsService } from '../add-questions/questions.service';
 
 // Angular Material
