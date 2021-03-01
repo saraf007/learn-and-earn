@@ -15,6 +15,15 @@ The concept of the project is based on the idea that one can earn points if they
     <li>Angular</li>
     <li>Node.js</li>
   </ul>
+  
+<hr>
+
+<h3>Features: </h3>
+  <ul>
+    <li>MCQs pattern questions on different web technologies</li>
+    <li>100 Points = 1 Rupee</li>
+  </ul>
+
 <hr>
 
 <h3>Appreciation : :blue_heart:	</h3>
