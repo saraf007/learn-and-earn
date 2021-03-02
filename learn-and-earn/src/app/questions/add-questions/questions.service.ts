@@ -8,6 +8,7 @@ import { Observable, Subject } from 'rxjs';
 
 // Project
 import { Question } from '../questions.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: "root"
@@ -21,7 +22,7 @@ export class QuestionsService {
 
   /**GET: fetch all questions */
   getQuestions() {
-    this.http.get<{message: string, questions: any}>("http://localhost:3000/api/questions")
+    this.http.get<{message: string, questions: any}>(environment.apiUrl + "/questions")
       .pipe(map((questionData) => {
         return questionData.questions.map(question => {
           return {
@@ -42,17 +43,17 @@ export class QuestionsService {
 
 /**GET: fetch first question from the collection */
 getFirstQuestion(): Observable<Question> {
- return this.http.get<Question>("http://localhost:3000/api/question");
+ return this.http.get<Question>(environment.apiUrl+ "/question");
 }
 
 /**GET: fetch next question from the collection */
 getNextQuestion(questionNumber: string): Observable<Question> {
-  return this.http.get<Question>("http://localhost:3000/api/nextquestion/" + questionNumber);
+  return this.http.get<Question>(environment.apiUrl + "/nextquestion/" + questionNumber);
 }
 
 /**GET: fetch previous question from the collection */
 getPreviousQuestion(questionNumber: string): Observable<Question> {
-  return this.http.get<Question>("http://localhost:3000/api/previousquestion/" + questionNumber);
+  return this.http.get<Question>(environment.apiUrl + "/previousquestion/" + questionNumber);
 }
 
   /**POST: add questions  */
@@ -64,7 +65,7 @@ getPreviousQuestion(questionNumber: string): Observable<Question> {
       answer: answer,
       correctAnswer: null
     };
-    this.http.post<Question[]>("http://localhost:3000/api/questions", questionPayLoad)
+    this.http.post<Question[]>(environment.apiUrl + "/questions", questionPayLoad)
         .subscribe((data) => {
           console.log(data);
           this.questions.push(questionPayLoad);
@@ -72,7 +73,7 @@ getPreviousQuestion(questionNumber: string): Observable<Question> {
   }
 
   deleteQuestions(id: string) {
-    this.http.delete("http://localhost:3000/api/questions/" + id).subscribe(() => {
+    this.http.delete(environment.apiUrl + "/questions/" + id).subscribe(() => {
       console.log('Deleted');
       const updatedQuestions = this.questions.filter(question => question.id !== id);
       this.questions = updatedQuestions;

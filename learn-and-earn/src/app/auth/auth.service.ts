@@ -10,6 +10,7 @@ import { catchError, map } from 'rxjs/operators';
 // Project
 import { AuthData } from './auth-data.model';
 import { NotificationService } from '../shared/notification/notification.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -28,7 +29,7 @@ export class AuthService {
       email: email,
       password: password
     };
-   return this.http.post<{message: string}>("http://localhost:3000/api/user/signup", authData)
+   return this.http.post<{message: string}>(environment.apiUrl + "/user/signup", authData)
     .pipe(
       catchError((error: HttpErrorResponse) => {
         this.notificationService.showNotification(`User: ${email} already exist.
@@ -44,7 +45,7 @@ export class AuthService {
       email: email,
       password: password
     };
-    return this.http.post<{token: string, message: string, expiresIn: number}>("http://localhost:3000/api/user/login", authData)
+    return this.http.post<{token: string, message: string, expiresIn: number}>(environment.apiUrl + "/user/login", authData)
       .pipe(
         map((data: any) => {
             const token = data.token;
