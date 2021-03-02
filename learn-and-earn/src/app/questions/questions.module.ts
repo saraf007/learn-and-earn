@@ -1,6 +1,7 @@
 // Angular
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 // Project
 import { QuestionComponent } from './view-questions/question.component';
@@ -9,14 +10,13 @@ import { AngularMaterialModule } from "../angular-material.module";
 
 @NgModule({
   imports: [
+    CommonModule,
     FormsModule,
     AngularMaterialModule
   ],
-  exports: [],
   declarations: [
     QuestionComponent,
     AddQuestionsComponent
   ],
-  providers: [],
 })
 export class QuestionsModule { }

@@ -14,7 +14,7 @@ import { NotificationService } from "../../shared/notification/notification.serv
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit, OnDestroy {
+export class SignupComponent implements OnInit {
   createUser: Subscription;
   isLoading:boolean = false;
 
@@ -34,10 +34,5 @@ export class SignupComponent implements OnInit, OnDestroy {
           this.notificationService.showNotification(response.message);
           this.router.navigate(['/login']);
       });
-    }
-
-    // to prevent memory leak
-    ngOnDestroy() {
-      this.createUser.unsubscribe();
     }
 }
