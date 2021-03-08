@@ -12,8 +12,6 @@ import { DialogboxComponent } from './dialogbox/dialogbox.component';
 import { NotificationComponent } from './shared/notification/notification.component';
 import { AuthInterceptor } from "./auth/auth-interceptor";
 import { NavigationComponent } from './shared/navigation/navigation/navigation.component';
-import { ProgressBarComponent } from './progress-bar/progress-bar.component';
-import { AngularMaterialModule } from "./angular-material.module";
 import { QuestionsModule } from "./questions/questions.module";
 import { AuthModule } from "./auth/auth.module";
 
@@ -21,7 +19,6 @@ import { AuthModule } from "./auth/auth.module";
   declarations: [
     AppComponent,
     HeaderComponent,
-    ProgressBarComponent,
     DialogboxComponent,
     NotificationComponent,
     NavigationComponent
@@ -31,7 +28,6 @@ import { AuthModule } from "./auth/auth.module";
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AngularMaterialModule,
     QuestionsModule,
     AuthModule
   ],

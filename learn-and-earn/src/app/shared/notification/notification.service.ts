@@ -1,6 +1,5 @@
 // Angular
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 // Project
 import { NotificationComponent } from './notification.component';
@@ -10,16 +9,16 @@ import { NotificationComponent } from './notification.component';
 })
 export class NotificationService {
 
-  constructor(private snackBar: MatSnackBar) { }
+  constructor() { }
 
-  showNotification(displayMessage: string) {
-    this.snackBar.openFromComponent(NotificationComponent, {
-      data: {
-        message: displayMessage
-      },
-      duration: 5000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom'
-    });
-  }
+  // showNotification(displayMessage: string) {
+  //   this.snackBar.openFromComponent(NotificationComponent, {
+  //     data: {
+  //       message: displayMessage
+  //     },
+  //     duration: 5000,
+  //     horizontalPosition: 'center',
+  //     verticalPosition: 'bottom'
+  //   });
+  // }
 }

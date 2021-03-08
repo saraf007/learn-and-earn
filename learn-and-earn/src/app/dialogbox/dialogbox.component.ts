@@ -1,9 +1,6 @@
 // Angular
 import { Component, Inject, OnInit } from '@angular/core';
 
-// Angular Material
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-
 // Project
 import { Question } from '../questions/questions.model';
 import { QuestionsService } from '../questions/add-questions/questions.service';
@@ -17,8 +14,7 @@ export class DialogboxComponent implements OnInit {
   isloading = false;
   singleQuestion: Question;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {dialogDescription: string, dialogContent: string,
-    questionNumber: number}, private questionsService: QuestionsService) {}
+  constructor(private questionsService: QuestionsService) {}
 
   ngOnInit(): void {
   }

@@ -32,8 +32,8 @@ export class AuthService {
    return this.http.post<{message: string}>(environment.apiUrl + "/user/signup", authData)
     .pipe(
       catchError((error: HttpErrorResponse) => {
-        this.notificationService.showNotification(`User: ${email} already exist.
-         Please use another email id for creating an account.`);
+        // this.notificationService.showNotification(`User: ${email} already exist.
+        //  Please use another email id for creating an account.`);
           return throwError(error);
       })
     )

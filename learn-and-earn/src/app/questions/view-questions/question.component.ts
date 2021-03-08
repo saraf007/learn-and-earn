@@ -9,9 +9,6 @@ import { Question } from '../questions.model';
 import { DialogboxComponent } from '../../dialogbox/dialogbox.component';
 import { QuestionsService } from '../add-questions/questions.service';
 
-// Angular Material
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-
 @Component({
     selector: 'app-question',
     templateUrl: './question.component.html',
@@ -27,7 +24,7 @@ export class QuestionComponent implements OnInit {
     dialogBox: any;
     isAnswerCorrect: boolean = false;
 
-    constructor(private questionsService: QuestionsService, public dialog: MatDialog) { }
+    constructor(private questionsService: QuestionsService) { }
 
     ngOnInit() {
        //this.getQuestionAnswer();
@@ -82,53 +79,53 @@ export class QuestionComponent implements OnInit {
       // check if answer is marked or not
       if(selectedAnswer === undefined || selectedAnswer === null) {
         this.isAnswerCorrect = false;
-        this.dialogConfig(this.isAnswerCorrect, selectedAnswer);
+        // this.dialogConfig(this.isAnswerCorrect, selectedAnswer);
       }
       // check if answer is correct or not
      else if(selectedAnswer === this.singleQuestion.correctAnswer) {
         this.points = this.points + 1;
         this.isAnswerCorrect = true;
-        this.dialogConfig(this.isAnswerCorrect, selectedAnswer);
+        // this.dialogConfig(this.isAnswerCorrect, selectedAnswer);
       }
       // answer is wrong
       else{
         this.points = this.points - 1;
         this.isAnswerCorrect = false;
-        this.dialogConfig(this.isAnswerCorrect, selectedAnswer);
+        // this.dialogConfig(this.isAnswerCorrect, selectedAnswer);
       }
     }
 
     // dialog configuration
-    private dialogConfig(isAnswerCorrect: boolean, selectedAnswer: string) {
-      const config = new MatDialogConfig();
-      config.disableClose = true;
+    // private dialogConfig(isAnswerCorrect: boolean, selectedAnswer: string) {
+    //   const config = new MatDialogConfig();
+    //   config.disableClose = true;
 
-      if (!isAnswerCorrect) {
-        if(selectedAnswer === undefined) {
-          config.panelClass = "warning";
-          config.data = {
-            dialogDescription : `Please select an answer!`
-          };
-          this.dialog.open(DialogboxComponent, config);
-          return;
-        }
-        config.panelClass = "danger";
-        config.data = {
-          dialogDescription : `Your answer : ${selectedAnswer} is wrong.`,
-          dialogContent: `You have lost 1 Point.
-          Your Total Points are ${this.points}.`
-        };
-        this.dialog.open(DialogboxComponent, config);
-      }
-      if(isAnswerCorrect) {
-        config.panelClass = "success";
-        config.data = {
-          dialogDescription : `Your answer : ${selectedAnswer} is correct.`,
-          dialogContent: `You have earned 1 Point.
-          Your Total Points are ${this.points}.`,
-        };
-        this.dialog.open(DialogboxComponent, config);
-      }
-    }
+    //   if (!isAnswerCorrect) {
+    //     if(selectedAnswer === undefined) {
+    //       config.panelClass = "warning";
+    //       config.data = {
+    //         dialogDescription : `Please select an answer!`
+    //       };
+    //       this.dialog.open(DialogboxComponent, config);
+    //       return;
+    //     }
+    //     config.panelClass = "danger";
+    //     config.data = {
+    //       dialogDescription : `Your answer : ${selectedAnswer} is wrong.`,
+    //       dialogContent: `You have lost 1 Point.
+    //       Your Total Points are ${this.points}.`
+    //     };
+    //     this.dialog.open(DialogboxComponent, config);
+    //   }
+    //   if(isAnswerCorrect) {
+    //     config.panelClass = "success";
+    //     config.data = {
+    //       dialogDescription : `Your answer : ${selectedAnswer} is correct.`,
+    //       dialogContent: `You have earned 1 Point.
+    //       Your Total Points are ${this.points}.`,
+    //     };
+    //     this.dialog.open(DialogboxComponent, config);
+    //   }
+    // }
 
 }
