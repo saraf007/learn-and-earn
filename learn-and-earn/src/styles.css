@@ -1,15 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
-body {
-  margin: 0;
-   font-family: Roboto, "Helvetica Neue", sans-serif;
-   background-image: url('assets/images/landing-page-background.jpg');
-   background-size: cover;
-   background-attachment: fixed;
-   height: 40rem;
-   background-repeat: no-repeat;
- }
-
 .success .mat-dialog-container {
   border: 2px solid green;
   background-color: #e9ffdb;
