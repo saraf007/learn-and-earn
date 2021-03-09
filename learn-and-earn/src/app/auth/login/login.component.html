@@ -1,13 +1,36 @@
-    <mat-spinner *ngIf="isLoading" strokeWidth="3" [diameter]="45"></mat-spinner>
-      <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
-          <mat-form-field>
-              <input matInput type="email" placeholder="E-Mail" name="email"
-               ngModel #emailInput="ngModel" required email>
-              <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-              <input matInput placeholder="Password" type="password" name="password" ngModel #passwordInput="ngModel" required>
-              <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
-          </mat-form-field>
-          <button mat-raised-button color="accent" type="submit">Login</button>
-      </form>
+<!-- spinner -->
+<div class="d-flex justify-content-center">
+  <div class="spinner-border m-5" role="status" *ngIf="isLoading" style="width: 3rem; height: 3rem;">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<!-- login form -->
+<div class="container-fluid" *ngIf="!isLoading">
+  <div class="row">
+    <div class="col-sm">
+      <img src="../../../assets/images/login-img.svg" class="img-fluid" alt="login">
+    </div>
+    <div class="col-sm">
+      <div class="mb-3 mt-5">
+        <form class="row g-3" (submit)="onLogin(loginForm)" #loginForm="ngForm">
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" name="email"
+             ngModel #emailInput="ngModel" required email autocomplete="on">
+             <span *ngIf="emailInput.touched && emailInput.invalid">Please enter a valid email.</span>
+          </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inputPassword4" name="password"
+             ngModel #passwordInput="ngModel" required autocomplete="on">
+             <span *ngIf="passwordInput.touched && passwordInput.invalid">Please enter a valid password.</span>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
