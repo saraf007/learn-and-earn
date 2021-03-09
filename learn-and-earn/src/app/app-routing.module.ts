@@ -11,8 +11,8 @@ import { QuestionComponent } from './questions/view-questions/question.component
 import { NavigationComponent } from './shared/navigation/navigation/navigation.component';
 
 const routes: Routes = [
-  { path: '', component: HeaderComponent },
-  { path: 'login', component: LoginComponent },
+  // { path: '', component: HeaderComponent },
+  { path: '', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'question', component: QuestionComponent, canActivate: [AuthGuard] },
   { path: 'navigation', component: NavigationComponent, canActivate: [AuthGuard] }

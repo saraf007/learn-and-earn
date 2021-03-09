@@ -1,6 +1,6 @@
 <!-- spinner -->
 <div class="d-flex justify-content-center">
-  <div class="spinner-border m-5" role="status" *ngIf="isLoading" style="width: 3rem; height: 3rem;">
+  <div class="spinner-border m-5" role="status" *ngIf="isLoading">
     <span class="visually-hidden">Loading...</span>
   </div>
 </div>
@@ -9,28 +9,59 @@
 <div class="container-fluid" *ngIf="!isLoading">
   <div class="row">
     <div class="col-sm">
-      <img src="../../../assets/images/login-img.svg" class="img-fluid" alt="login">
-    </div>
-    <div class="col-sm">
-      <div class="mb-3 mt-5">
-        <form class="row g-3" (submit)="onLogin(loginForm)" #loginForm="ngForm">
-          <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">Email</label>
-            <input type="email" class="form-control" id="inputEmail4" name="email"
-             ngModel #emailInput="ngModel" required email autocomplete="on">
-             <span *ngIf="emailInput.touched && emailInput.invalid">Please enter a valid email.</span>
-          </div>
-          <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">Password</label>
-            <input type="password" class="form-control" id="inputPassword4" name="password"
-             ngModel #passwordInput="ngModel" required autocomplete="on">
-             <span *ngIf="passwordInput.touched && passwordInput.invalid">Please enter a valid password.</span>
-          </div>
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary">Login</button>
-          </div>
-        </form>
+      <img src="../../../assets/images/logo-img.svg" class="img-fluid mt-5" alt="login">
+      <div style="margin-top: 5rem; margin-left: 10rem;">
+        <h1>Learn&Earn</h1>
       </div>
     </div>
+     <div class="col-sm">
+        <div class="mb-3 mt-5 form">
+           <form class="row g-3" (submit)="onLogin(loginForm)" #loginForm="ngForm">
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <input type="email" class="form-control" id="inputEmail4" name="email"
+          ngModel #emailInput="ngModel" required email autocomplete="on" placeholder="Email address or phone number" />
+          <span *ngIf="emailInput.touched && emailInput.invalid" class="text-danger">Please enter a valid email.</span>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <input type="password" class="form-control" id="inputPassword4" name="password"
+          ngModel #passwordInput="ngModel" required autocomplete="on" placeholder="Password"/>
+          <span *ngIf="passwordInput.touched && passwordInput.invalid" class="text-danger">Please enter a valid password.</span>
+        </div>
+
+        <!-- 2 column grid layout for inline styling -->
+        <div class="row mb-4">
+          <div class="col d-flex justify-content-center">
+            <!-- Checkbox -->
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="form2Example3"
+                checked
+              />
+              <label class="form-check-label" for="form2Example3">Remember me</label>
+            </div>
+          </div>
+
+          <div class="col">
+            <!-- Simple link -->
+            <a href="#!">Forgot password?</a>
+          </div>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
+
+        <div class="text-center">
+          <p>Not a member? <a href="#!">Register</a></p>
+        </div>
+      </form>
+        </div>
+      </div>
   </div>
 </div>
+

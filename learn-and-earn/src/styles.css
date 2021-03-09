@@ -17,3 +17,9 @@
 .mat-progress-spinner circle, .mat-spinner circle {
   stroke: green!important;
 } */
+
+.spinner-border {
+  color: #6C63FF;
+  width: 3rem;
+  height: 3rem;
+}
