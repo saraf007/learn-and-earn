@@ -1,14 +1,3 @@
-mat-form-field {
-  width: 100%;
-}
-
-mat-spinner {
-margin: auto;
-}
-
-mat-card {
-  width: fit-content;
-  margin: auto;
-  position: relative;
-  top: 30%;
+.form {
+  margin-top: 7rem !important;
 }

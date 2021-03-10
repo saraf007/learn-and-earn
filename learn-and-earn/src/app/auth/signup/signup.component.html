@@ -1,23 +1,44 @@
+    <!-- spinner -->
+<div class="d-flex justify-content-center">
+  <div class="spinner-border m-5" role="status" *ngIf="isLoading">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm">
-          <img src="../../../assets/images/signup-img.svg" class="img-fluid" alt="login">
+          <img src="../../../assets/images/signup-img.svg" class="img-fluid" alt="signup">
         </div>
         <div class="col-sm">
-          <div class="mb-3 mt-5">
+          <div class="mb-3 mt-5 form">
             <form class="row g-3" (submit)="onSignup(signupForm)" #signupForm="ngForm">
-              <div class="col-md-6">
-                <label for="inputEmail4" class="form-label">Email</label>
+              <!-- email -->
+              <div class="form-outline col-sm-8">
                 <input type="email" class="form-control" id="inputEmail4" name="email"
-                 ngModel #emailInput="ngModel" required email>
-                 <span *ngIf="emailInput.touched && emailInput.invalid">Please enter a valid email.</span>
+                ngModel #emailInput="ngModel" required email placeholder="Email address or phone number" />
+                <span *ngIf="emailInput.touched && emailInput.invalid" class="text-danger">Please enter a valid email.</span>
               </div>
-              <div class="col-md-6">
-                <label for="inputPassword4" class="form-label">Password</label>
-                <input type="password" class="form-control" id="inputPassword4" name="password"
-                 ngModel #passwordInput="ngModel" required>
-                 <span *ngIf="passwordInput.touched && passwordInput.invalid">Please enter a valid password.</span>
+              <!-- Password -->
+              <div class="form-outline col-sm-8">
+                <input type="password" class="form-control" id="inputPassword" name="password"
+                ngModel #passwordInput="ngModel" required placeholder="Password" pattern="^[A-Za-z]\w{7,14}$"/>
+                 <div *ngIf="passwordInput.invalid && passwordInput.touched" class="text-danger">
+                    <div *ngIf="passwordInput.errors.required">Password is required.</div>
+                    <div *ngIf="passwordInput.errors.pattern">Password must contain at least 1 alphabetical character,
+                          1 numeric character, must be 8 characters or longer.</div>
+                 </div>
               </div>
+              <!--confirm password -->
+              <div class="form-outline col-sm-8">
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                ngModel #confirmPasswordInput="ngModel" required placeholder="Confirm Password" pattern="{{ passwordInput.value }}"/>
+                <div *ngIf="confirmPasswordInput.invalid && confirmPasswordInput.touched" class="text-danger">
+                  <div *ngIf="confirmPasswordInput.errors.required">Confirm password is required.</div>
+                  <div *ngIf="confirmPasswordInput.errors.pattern">Password and Confirm Password does not match.</div>
+               </div>
+              </div>
+              <!-- signup -->
               <div class="col-12">
                 <button type="submit" class="btn btn-primary">Sign up</button>
               </div>
