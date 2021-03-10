@@ -14,8 +14,6 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  links = ['First', 'Second', 'Third'];
-  activeLink = this.links[0];
 
   onLogout() {
     this.authService.logoutUser();

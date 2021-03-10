@@ -6,8 +6,8 @@ import { Subscription } from 'rxjs';
 
 // Project
 import { Question } from '../questions.model';
-import { DialogboxComponent } from '../../dialogbox/dialogbox.component';
 import { QuestionsService } from '../add-questions/questions.service';
+import { NotificationService } from '../../shared/notification/notification.service';
 
 @Component({
     selector: 'app-question',
@@ -24,7 +24,8 @@ export class QuestionComponent implements OnInit {
     dialogBox: any;
     isAnswerCorrect: boolean = false;
 
-    constructor(private questionsService: QuestionsService) { }
+    constructor(private questionsService: QuestionsService,
+                private notificationService: NotificationService) { }
 
     ngOnInit() {
        //this.getQuestionAnswer();
@@ -79,7 +80,7 @@ export class QuestionComponent implements OnInit {
       // check if answer is marked or not
       if(selectedAnswer === undefined || selectedAnswer === null) {
         this.isAnswerCorrect = false;
-        // this.dialogConfig(this.isAnswerCorrect, selectedAnswer);
+        this.notificationService.showNotification(this.isAnswerCorrect);
       }
       // check if answer is correct or not
      else if(selectedAnswer === this.singleQuestion.correctAnswer) {

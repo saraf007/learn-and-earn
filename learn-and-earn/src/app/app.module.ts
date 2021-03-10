@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Project
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HeaderComponent } from './home/header/header.component';
 import { DialogboxComponent } from './dialogbox/dialogbox.component';
 import { NotificationComponent } from './shared/notification/notification.component';
 import { AuthInterceptor } from "./auth/auth-interceptor";
@@ -18,7 +17,6 @@ import { AuthModule } from "./auth/auth.module";
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     DialogboxComponent,
     NotificationComponent,
     NavigationComponent

@@ -41,7 +41,7 @@ export class QuestionsService {
     return this.questionsUpdated.asObservable();
 }
 
-/**GET: fetch first question from the collection */
+/**GET: first question from the collection */
 getFirstQuestion(): Observable<Question> {
  return this.http.get<Question>(environment.apiUrl+ "/question");
 }

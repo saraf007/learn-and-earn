@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
       this.createUser = this.authService.createUser(form.value.email, form.value.password)
       .subscribe((response) => {
           // this.notificationService.showNotification(response.message);
-          this.router.navigate(['/login']);
+          this.router.navigate(['/']);
       });
     }
 }

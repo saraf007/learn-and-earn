@@ -25,18 +25,6 @@ exports.getAllQuestion = (req,res, next) => {
     });
 }
 
-// GET: fetch first question and answer from a collection
-exports.getFirstQuestion = (req,res, next) => {
-  Question.findOne().then(document => {
-        res.status(200).json(
-            {
-                message: 'First question fetched successfully',
-                questions: document
-            }
-        )
-    });
-}
-
 // GET: fetch next in line question and answer from a collection
 exports.getNextQuestion = (req, res, next) => {
   var count = Question.estimatedDocumentCount(function (err, count) {

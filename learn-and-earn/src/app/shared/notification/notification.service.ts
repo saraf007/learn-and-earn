@@ -8,17 +8,17 @@ import { NotificationComponent } from './notification.component';
   providedIn: 'root'
 })
 export class NotificationService {
+  message: string
 
   constructor() { }
 
-  // showNotification(displayMessage: string) {
-  //   this.snackBar.openFromComponent(NotificationComponent, {
-  //     data: {
-  //       message: displayMessage
-  //     },
-  //     duration: 5000,
-  //     horizontalPosition: 'center',
-  //     verticalPosition: 'bottom'
-  //   });
-  // }
+  showNotification(data: any) {
+    if(data === false) {
+     this.message = "Your answer is invalid.";
+    }
+  }
+
+  displayMessage() {
+    return this.message;
+  }
 }
