@@ -2,8 +2,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 
 // Project
-import { Question } from '../questions/questions.model';
-import { QuestionsService } from '../questions/add-questions/questions.service';
+import { Question } from '../questions.model';
+import { QuestionsService } from '../add-questions/questions.service';
 
 @Component({
   selector: 'app-dialogbox',

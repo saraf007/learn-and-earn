@@ -8,7 +8,7 @@ import { Subscription } from "rxjs";
 
 // Project
 import { AuthService } from "../auth.service";
-import { NotificationService } from "../../shared/notification/notification.service";
+import { NotificationService } from "../../notification/notification.service";
 
 @Component({
   templateUrl: './signup.component.html',

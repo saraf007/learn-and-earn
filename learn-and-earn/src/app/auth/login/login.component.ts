@@ -8,7 +8,7 @@ import { Subscription } from "rxjs";
 
 // Project
 import { AuthService } from '../auth.service';
-import { NotificationService } from 'src/app/shared/notification/notification.service';
+import { NotificationService } from 'src/app/notification/notification.service';
 
 @Component({
     selector: 'app-login',

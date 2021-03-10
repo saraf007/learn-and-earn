@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
 // Project
 import { Question } from '../questions.model';
 import { QuestionsService } from '../add-questions/questions.service';
-import { NotificationService } from '../../shared/notification/notification.service';
+import { NotificationService } from "../notification/notification.service";
 
 @Component({
     selector: 'app-question',

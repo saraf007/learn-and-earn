@@ -9,7 +9,7 @@ import { catchError, map } from 'rxjs/operators';
 
 // Project
 import { AuthData } from './auth-data.model';
-import { NotificationService } from '../shared/notification/notification.service';
+import { NotificationService } from '../notification/notification.service';
 import { environment } from '../../environments/environment';
 
 @Injectable({providedIn: 'root'})

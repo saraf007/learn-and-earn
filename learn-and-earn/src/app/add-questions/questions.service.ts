@@ -8,7 +8,7 @@ import { Observable, Subject } from 'rxjs';
 
 // Project
 import { Question } from '../questions.model';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: "root"
