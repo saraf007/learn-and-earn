@@ -80,7 +80,7 @@ export class QuestionComponent implements OnInit {
       // check if answer is marked or not
       if(selectedAnswer === undefined || selectedAnswer === null) {
         this.isAnswerCorrect = false;
-        this.notificationService.showNotification(this.isAnswerCorrect);
+        this.notificationService.success("please enter something.");
       }
       // check if answer is correct or not
      else if(selectedAnswer === this.singleQuestion.correctAnswer) {

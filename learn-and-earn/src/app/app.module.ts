@@ -10,21 +10,20 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DialogboxComponent } from './dialogbox/dialogbox.component';
-import { NotificationComponent } from './notification/notification.component';
 import { AuthInterceptor } from "./auth/auth-interceptor";
 import { NavigationComponent } from './navigation/navigation.component';
 import { AuthModule } from "./auth/auth.module";
 import { QuestionComponent } from './view-questions/question.component';
 import { AddQuestionsComponent } from './add-questions/add-questions.component';
+import { NotificationModule } from './notification/notification.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     DialogboxComponent,
-    NotificationComponent,
     NavigationComponent,
     QuestionComponent,
-    AddQuestionsComponent
+    AddQuestionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +33,7 @@ import { AddQuestionsComponent } from './add-questions/add-questions.component';
     AuthModule,
     CommonModule,
     FormsModule,
+    NotificationModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

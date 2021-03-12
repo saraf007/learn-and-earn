@@ -6,15 +6,17 @@ import { CommonModule } from '@angular/common';
 // Project
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { NotificationModule } from "../notification/notification.module";
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    NotificationModule
   ],
   declarations: [
     LoginComponent,
-    SignupComponent
+    SignupComponent,
   ],
   providers: [],
 })

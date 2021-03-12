@@ -1,4 +1,15 @@
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>{{ message }}</strong>
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div *ngFor="let notification of notifications"
+ class="{{cssClass(notification)}}" role="alert"
+ style="width: fit-content;
+        border-radius: 10px;
+        margin: auto;
+        margin-top: 5%;">
+  <button type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+          (click)="removeNotification(notification)">
+  </button>
+  <span [innerHTML]="notification.message"
+  style="padding-left: 10px; position: relative; bottom: 4px;"></span>
 </div>

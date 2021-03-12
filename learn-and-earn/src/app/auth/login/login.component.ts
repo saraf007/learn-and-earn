@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
      this.loginUser = this.authService.loginUser(form.value.email, form.value.password)
       .subscribe((res) => {
         this.isLoading = false;
-        // this.notificationService.showNotification(res.message);
+        this.notificationService.success(res.message, {autoClose: false, fade: true});
         this.router.navigate(['/navigation']);
       });
     }
