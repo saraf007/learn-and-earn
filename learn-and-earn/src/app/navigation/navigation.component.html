@@ -8,29 +8,22 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/question">HTML</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-          role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
+        </li> -->
       </ul>
-          <button class="btn btn-outline-success" (click)="onLogout()">Logout</button>
+      <div class="dropdown float-end me-5">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
+         data-bs-toggle="dropdown" aria-expanded="false">
+          Account
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownAccountButton">
+          <li><a class="dropdown-item" href="#">Your Profile</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><button class="dropdown-item" (click)="onLogout()" type="button">Logout</button></li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
@@ -42,7 +35,7 @@
       <div class="card-body">
         <h6 class="card-title text-muted">40+ Questions on HTML</h6>
         <p class="card-text">The basic building block of a website.</p>
-        <a href="#" class="btn btn-primary">Attempt</a>
+        <a routerLink="/question" class="btn btn-primary">Attempt</a>
       </div>
     </div>
   </div>
@@ -65,7 +58,6 @@
     </div>
   </div>
 </div>
-
 <div class="row container-fluid">
   <div class="col-md-4 mt-3">
     <div class="card">
