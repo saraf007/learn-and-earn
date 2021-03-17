@@ -80,19 +80,19 @@ export class QuestionComponent implements OnInit {
     evaluateQuestion(form: NgForm) {
       // check if answer is marked or not
       if(form.value.selectedAnswer === "") {
-        this.isAnswerCorrect = false;
         this.notificationService.warn("Please choose one answer.", {autoClose: true});
       }
       // if answer is correct
      else if(form.value.selectedAnswer === this.singleQuestion.correctAnswer) {
         this.points = this.points + 1;
-        this.isAnswerCorrect = true;
         this.notificationService.success("Your answer is correct.", {autoClose: true});
       }
       // answer is wrong
       else{
-        this.points = this.points - 1;
-        this.isAnswerCorrect = false;
+        if(this.points !== 0) {
+          this.points = this.points - 1;
+        }
+        this.notificationService.error("Your answer is incorrect.", {autoClose: true});
       }
     }
 }
