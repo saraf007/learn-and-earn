@@ -1,4 +1,5 @@
 // Angular
+import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 // RXJS
@@ -76,14 +77,14 @@ export class QuestionComponent implements OnInit {
     }
 
     // evaluate question
-    evaluateQuestion(answer: any) {
+    evaluateQuestion(form: NgForm) {
       // check if answer is marked or not
-      if(answer === undefined || answer === null) {
+      if(form.value.selectedAnswer === "") {
         this.isAnswerCorrect = false;
         this.notificationService.warn("Please choose one answer.", {autoClose: true});
       }
       // if answer is correct
-     else if(answer.value === this.singleQuestion.correctAnswer) {
+     else if(form.value.selectedAnswer === this.singleQuestion.correctAnswer) {
         this.points = this.points + 1;
         this.isAnswerCorrect = true;
         this.notificationService.success("Your answer is correct.", {autoClose: true});
@@ -92,41 +93,6 @@ export class QuestionComponent implements OnInit {
       else{
         this.points = this.points - 1;
         this.isAnswerCorrect = false;
-        // this.dialogConfig(this.isAnswerCorrect, selectedAnswer);
       }
     }
-
-    // dialog configuration
-    // private dialogConfig(isAnswerCorrect: boolean, selectedAnswer: string) {
-    //   const config = new MatDialogConfig();
-    //   config.disableClose = true;
-
-    //   if (!isAnswerCorrect) {
-    //     if(selectedAnswer === undefined) {
-    //       config.panelClass = "warning";
-    //       config.data = {
-    //         dialogDescription : `Please select an answer!`
-    //       };
-    //       this.dialog.open(DialogboxComponent, config);
-    //       return;
-    //     }
-    //     config.panelClass = "danger";
-    //     config.data = {
-    //       dialogDescription : `Your answer : ${selectedAnswer} is wrong.`,
-    //       dialogContent: `You have lost 1 Point.
-    //       Your Total Points are ${this.points}.`
-    //     };
-    //     this.dialog.open(DialogboxComponent, config);
-    //   }
-    //   if(isAnswerCorrect) {
-    //     config.panelClass = "success";
-    //     config.data = {
-    //       dialogDescription : `Your answer : ${selectedAnswer} is correct.`,
-    //       dialogContent: `You have earned 1 Point.
-    //       Your Total Points are ${this.points}.`,
-    //     };
-    //     this.dialog.open(DialogboxComponent, config);
-    //   }
-    // }
-
 }
