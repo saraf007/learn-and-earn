@@ -23,10 +23,12 @@ export class QuestionComponent implements OnInit {
     isLoading = false;
     points: number = 0;
     dialogBox: any;
-    isAnswerCorrect: boolean = false;
+    isAnswered: boolean = false;
+    disableCheckBtnOnCorrectAnswer: boolean = false;
 
     constructor(private questionsService: QuestionsService,
-                private notificationService: NotificationService) { }
+                private notificationService: NotificationService,
+                ) { }
 
     ngOnInit() {
        //this.getQuestionAnswer();
@@ -85,6 +87,8 @@ export class QuestionComponent implements OnInit {
       // if answer is correct
      else if(form.value.selectedAnswer === this.singleQuestion.correctAnswer) {
         this.points = this.points + 1;
+        this.isAnswered = true;
+        this.disableCheckBtnOnCorrectAnswer = true;
         this.notificationService.success("Your answer is correct.", {autoClose: true});
       }
       // answer is wrong
@@ -92,6 +96,8 @@ export class QuestionComponent implements OnInit {
         if(this.points !== 0) {
           this.points = this.points - 1;
         }
+        this.isAnswered = true;
+        this.disableCheckBtnOnCorrectAnswer = true;
         this.notificationService.error("Your answer is incorrect.", {autoClose: true});
       }
     }
