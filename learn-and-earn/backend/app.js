@@ -39,4 +39,28 @@ app.use("/api/question", (req,res, next) => {
     });
   });
 
+// GET: fetch next in line question and answer from a collection
+app.use("/api/nextquestion/:questionNumber", (req, res, next) => {
+  var count = Question.estimatedDocumentCount(function (err, count) {
+          if(err) {
+            console.log(err)
+          }
+          else {
+            console.log(count);
+            var i = 0;
+            while(i != count) {
+              Question.findOne({questionNumber: {$gt: req.params.questionNumber}})
+              .then(document => {
+                console.log(document);
+                res.status(200).json({
+                  message: 'Next question fetched successfully.',
+                  questions: document
+                });
+              })
+              i++;
+            }
+          }
+        });
+    });
+
 module.exports = app;

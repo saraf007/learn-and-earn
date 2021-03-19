@@ -25,30 +25,6 @@ exports.getAllQuestion = (req,res, next) => {
     });
 }
 
-// GET: fetch next in line question and answer from a collection
-exports.getNextQuestion = (req, res, next) => {
-  var count = Question.estimatedDocumentCount(function (err, count) {
-          if(err) {
-            console.log(err)
-          }
-          else {
-            console.log(count);
-            var i = 0;
-            while(i != count) {
-              Question.findOne({questionNumber: {$gt: req.params.questionNumber}})
-              .then(document => {
-                console.log(document);
-                res.status(200).json({
-                  message: 'Next question fetched successfully.',
-                  questions: document
-                });
-              })
-              i++;
-            }
-          }
-        });
-    }
-
 // GET: fetch previous question and answer from a collection
 exports.getPreviousQuestion = (req,res,next) => {
       Question.findOne({questionNumber: {$lt: req.params.questionNumber}})

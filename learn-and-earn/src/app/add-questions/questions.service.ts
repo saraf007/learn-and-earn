@@ -56,22 +56,6 @@ getPreviousQuestion(questionNumber: string): Observable<Question> {
   return this.http.get<Question>(environment.apiUrl + "/previousquestion/" + questionNumber);
 }
 
-  /**POST: add questions  */
-  // addQuestions(questionNumber: number, question: string, answer: string[]) {
-  //   const questionPayLoad: Question = {
-  //     id: null,
-  //     questionNumber: questionNumber,
-  //     question: question,
-  //     answer: answer,
-  //     correctAnswer: null
-  //   };
-  //   this.http.post<Question[]>(environment.apiUrl + "/questions", questionPayLoad)
-  //       .subscribe((data) => {
-  //         console.log(data);
-  //         this.questions.push(questionPayLoad);
-  //       });
-  // }
-
   deleteQuestions(id: string) {
     this.http.delete(environment.apiUrl + "/questions/" + id).subscribe(() => {
       console.log('Deleted');

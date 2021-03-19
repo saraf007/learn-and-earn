@@ -59,10 +59,11 @@ export class QuestionComponent implements OnInit {
     onGetNextQuestion(questionNumber: string) {
       this.isLoading = true;
         this.questionsService.getNextQuestion(questionNumber).subscribe((data: any) => {
-          console.log(data.questions);
           this.singleQuestion = data.questions;
           this.isLoading = false;
         });
+      this.isAnswered = false;
+      this.disableCheckBtnOnCorrectAnswer = false;
     }
 
     onGetPreviousQuestion(questionNumber: string) {

@@ -8,7 +8,7 @@
 <!-- question template -->
 <div class="container" *ngIf="!isLoading">
   <div class="card w-50 text-dark bg-light m-auto mt-5">
-    <h5 class="card-header">{{ singleQuestion.question }}</h5>
+    <h5 class="card-header">Q.{{ singleQuestion.questionNumber }} - {{ singleQuestion.question }}</h5>
     <div class="card-body">
       <form (submit)="evaluateQuestion(answer)" #answer="ngForm">
         <div class="form-check" *ngFor="let item of singleQuestion.answers">
@@ -28,7 +28,8 @@
               [disabled]="disableCheckBtnOnCorrectAnswer">Check</button>
           </div>
           <div class="col-6">
-            <button type="button" class="btn btn-outline-primary mt-3" [disabled]="!isAnswered">Next</button>
+            <button type="button" class="btn btn-outline-primary mt-3" 
+             [disabled]="!isAnswered" (click)="onGetNextQuestion(singleQuestion.questionNumber)">Next</button>
           </div>
         </div>
       </form>
