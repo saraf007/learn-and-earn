@@ -10,13 +10,15 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+  userEmail: string;
+
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.userEmail = localStorage.getItem("email");
   }
 
   onLogout() {
     this.authService.logoutUser();
   }
-
 }

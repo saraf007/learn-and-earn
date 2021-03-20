@@ -111,6 +111,6 @@ export class QuestionComponent implements OnInit {
     // finish quiz
     onFinishQuiz() {
       this.router.navigate(['/navigation']);
-      localStorage.clear();
+      localStorage.removeItem("points");
     }
 }

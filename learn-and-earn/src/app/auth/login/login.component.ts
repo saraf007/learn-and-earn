@@ -31,11 +31,11 @@ export class LoginComponent implements OnInit {
      if (form.invalid) {
        return;
      }
+     localStorage.setItem("email", form.value.email);
      this.isLoading = true;
      this.loginUser = this.authService.loginUser(form.value.email, form.value.password)
       .subscribe((res) => {
         this.isLoading = false;
-        this.notificationService.success(res.message, {autoClose: false, fade: true});
         this.router.navigate(['/navigation']);
       });
     }

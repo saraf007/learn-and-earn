@@ -16,6 +16,7 @@ import { AuthModule } from "./auth/auth.module";
 import { QuestionComponent } from './view-questions/question.component';
 import { AddQuestionsComponent } from './add-questions/add-questions.component';
 import { NotificationModule } from './notification/notification.module';
+import { ProfileComponent } from './account/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { NotificationModule } from './notification/notification.module';
     NavigationComponent,
     QuestionComponent,
     AddQuestionsComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

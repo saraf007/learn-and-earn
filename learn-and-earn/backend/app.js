@@ -3,7 +3,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const userRoutes = require("./routes/user");
+
 const Question = require('./models/question');
+const User = require("./models/user");
 
 const app = express();
 
@@ -62,5 +64,15 @@ app.use("/api/nextquestion/:questionNumber", (req, res, next) => {
           }
         });
     });
+
+// GET: fetch user info
+app.use("/api/userDetails", (req, res, next) => {
+  User.findOne({ email: req.query.email })
+    .then(document => {
+      return res.status(200).json({
+        user: document.email,
+      })
+    })
+});
 
 module.exports = app;

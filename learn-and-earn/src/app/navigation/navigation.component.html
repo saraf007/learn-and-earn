@@ -10,10 +10,10 @@
       <div class="dropdown float-end me-5 ms-auto">
         <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
          data-bs-toggle="dropdown" aria-expanded="false">
-          Account
+          Welcome {{ userEmail }}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownAccountButton">
-          <li><a class="dropdown-item" href="#">Your Profile</a></li>
+          <li><a class="dropdown-item" routerLink="/profile">Your Profile</a></li>
           <li><a class="dropdown-item" href="#">Settings</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><button class="dropdown-item" (click)="onLogout()" type="button">Logout</button></li>
