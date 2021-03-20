@@ -1,5 +1,6 @@
 // Angular
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 // RXJS
@@ -28,10 +29,10 @@ export class QuestionComponent implements OnInit {
 
     constructor(private questionsService: QuestionsService,
                 private notificationService: NotificationService,
+                private router: Router
                 ) { }
 
     ngOnInit() {
-       //this.getQuestionAnswer();
        this.getFirstQuestionAnswer();
     }
 
@@ -53,6 +54,9 @@ export class QuestionComponent implements OnInit {
         this.singleQuestion = data.questions;
         this.isLoading = false;
       });
+      if(this.points !== 0) {
+        this.points = parseInt(localStorage.getItem("points"));
+      }
     }
 
     // get the next question
@@ -88,6 +92,7 @@ export class QuestionComponent implements OnInit {
       // if answer is correct
      else if(form.value.selectedAnswer === this.singleQuestion.correctAnswer) {
         this.points = this.points + 1;
+        localStorage.setItem('points', this.points.toString());
         this.isAnswered = true;
         this.disableCheckBtnOnCorrectAnswer = true;
         this.notificationService.success("Your answer is correct.", {autoClose: true});
@@ -101,5 +106,11 @@ export class QuestionComponent implements OnInit {
         this.disableCheckBtnOnCorrectAnswer = true;
         this.notificationService.error("Your answer is incorrect.", {autoClose: true});
       }
+    }
+
+    // finish quiz
+    onFinishQuiz() {
+      this.router.navigate(['/navigation']);
+      localStorage.clear();
     }
 }

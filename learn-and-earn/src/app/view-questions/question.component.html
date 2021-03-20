@@ -28,7 +28,7 @@
               [disabled]="disableCheckBtnOnCorrectAnswer">Check</button>
           </div>
           <div class="col-6">
-            <button type="button" class="btn btn-outline-primary mt-3" 
+            <button type="button" class="btn btn-outline-primary mt-3"
              [disabled]="!isAnswered" (click)="onGetNextQuestion(singleQuestion.questionNumber)">Next</button>
           </div>
         </div>
@@ -59,7 +59,7 @@ aria-hidden="true" aria-labelledby="closeModalLabel" aria-hidden="true">
         <h6>3. Your next attempt will start from 0 Points.</h6>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" routerLink="/navigation">Yes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onFinishQuiz()">Yes</button>
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
       </div>
     </div>

@@ -37,7 +37,7 @@ export class NotificationComponent implements OnInit , OnDestroy {
 
           // auto close alert if required
           if (notification.autoClose) {
-            setTimeout(() => this.removeNotification(notification), 3000);
+            setTimeout(() => this.removeNotification(notification), 1000);
         }
         })
 
