@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <form>
+  <form (submit)="onSaveProfile(profileForm)" #profileForm="ngForm">
     <div class="row mb-3">
       <label for="email" class="col-sm-2 col-form-label">Email :</label>
       <div class="col-sm-7">
@@ -9,14 +9,21 @@
     <div class="row mb-3">
       <label for="username" class="col-sm-2 col-form-label">User Name :</label>
       <div class="col-sm-7">
-        <input type="text" class="form-control" id="username">
+        <input type="text" class="form-control" id="username" ngModel #username="ngModel" name="username">
       </div>
     </div>
+    <!-- Image Picker -->
     <div class="row mb-3">
       <label for="imgupload" class="form-label" style="width: 206px;">Display picture :</label>
-      <input class="form-control" type="file" id="imgupload" style="width: auto;">
+      <input class="form-control" type="file" id="imgupload"
+       style="width: auto;" (change)="onImageUpload($event)" required>
     </div>
+    <!-- Save Button -->
     <button type="submit" class="btn btn-primary">Save</button>
+    <!-- Image Preview -->
+    <div *ngIf="imagePreview !== '' && imagePreview" class="image-preview">
+      <img [src]="imagePreview" alt="profile">
+    </div>
   </form>
 </div>
 
