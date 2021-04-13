@@ -1,10 +1,8 @@
+
 # Learn & Earn :money_with_wings:
 The concept of the project is based on the idea that one can earn points if they answer questions correctly. For each correct answer, user gets +1 and for each wrong answer -1.
 
-<p align="center">
-  <img src="https://github.com/saraf007/learn-and-earn/blob/main/learn-and-earn/src/assets/images/logo.png"
-       width="300" height="300" title="learn & Earn" alt="Learn & Earn">
-</p>
+[![Learn&Earn](http://img.youtube.com/vi/Mvv8p6KIEUo/0.jpg)](http://www.youtube.com/watch?v=Mvv8p6KIEUo "Learn&Earn")
 
 <hr>
 
@@ -21,7 +19,7 @@ The concept of the project is based on the idea that one can earn points if they
 <h3>Features: </h3>
   <ul>
     <li>MCQs pattern questions on different web technologies</li>
-    <li>100 Points = 1 Rupee</li>
+    <li>1 Correct answer  = 1 Point</li>
   </ul>
 
 <hr>
@@ -35,3 +33,5 @@ The concept of the project is based on the idea that one can earn points if they
   <li>LinkedIn: <a href="https://www.linkedin.com/in/vikas-saraf/" target="_blank">Vikas Saraf</a></li>
   <li>My Website: <a href="https://vikas-saraf.netlify.com" target="_blank">Vikas Saraf</a></li>
 </ul>
+
+
